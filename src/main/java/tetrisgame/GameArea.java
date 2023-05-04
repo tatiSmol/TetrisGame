@@ -1,10 +1,16 @@
+package tetrisgame;
+
+import blocks.*;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 public class GameArea extends JPanel {
     private int gridRows, gridColumns, gridCellSize;
     private TetrisBlock block;
     private Color[][] background;
+    private TetrisBlock[] blocks;
 
 
     public GameArea(JPanel placeholder, int columns) {
@@ -18,10 +24,13 @@ public class GameArea extends JPanel {
         gridRows = this.getBounds().height / gridCellSize;
 
         background = new Color[gridRows][gridColumns];
+        blocks = new TetrisBlock[]{new ShapeI(), new ShapeJ(), new ShapeL(),
+                new ShapeO(), new ShapeS(), new ShapeT(), new ShapeZ()};
     }
 
     public void spawnBlock() {
-        block = new TetrisBlock(new int[][] {{1, 0}, {1, 0}, {1, 1}}, Color.BLUE);
+        Random random = new Random();
+        block = blocks[random.nextInt(blocks.length)];
         block.spawn(gridColumns);
     }
 
@@ -133,6 +142,15 @@ public class GameArea extends JPanel {
             return;
         }
         block.rotate();
+        if (block.getLeftEdge() < 0) {
+            block.setX(0);
+        }
+        if (block.getRightEdge() >= gridColumns) {
+            block.setX(gridColumns - block.getWidth());
+        }
+        if (block.getBottomEdge() >= gridRows) {
+            block.setY(gridRows - block.getHeight());
+        }
         repaint();
     }
 

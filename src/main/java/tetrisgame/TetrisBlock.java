@@ -1,4 +1,7 @@
+package tetrisgame;
+
 import java.awt.*;
+import java.util.Random;
 
 public class TetrisBlock {
     private int[][] shape;
@@ -7,9 +10,8 @@ public class TetrisBlock {
     private int x, y;
     private int currentRotation;
 
-    public TetrisBlock(int[][] shape, Color color) {
+    public TetrisBlock(int[][] shape) {
         this.shape = shape;
-        this.color = color;
         initShapes();
     }
 
@@ -30,9 +32,10 @@ public class TetrisBlock {
     }
 
     public void spawn(int gridWidth) {
-        currentRotation = 0;
+        Random random = new Random();
+        currentRotation = random.nextInt(shapes.length);
         shape = shapes[currentRotation];
-        x = (gridWidth - getWidth()) / 2;
+        x = random.nextInt(gridWidth - getWidth());
         y = -getHeight();
     }
 
@@ -44,12 +47,24 @@ public class TetrisBlock {
         return color;
     }
 
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
     public int getX() {
         return x;
     }
 
     public int getY() {
         return y;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 
     public int getHeight() {

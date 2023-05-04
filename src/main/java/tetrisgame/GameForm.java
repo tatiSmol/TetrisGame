@@ -1,3 +1,5 @@
+package tetrisgame;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -33,13 +35,6 @@ public class GameForm extends JFrame {
         gameAreaPlaceholder.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
         gameAreaPlaceholder.setPreferredSize(new Dimension(200, 300));
 
-        scoreDisplay.setFont(new java.awt.Font("Segoe UI", 0, 18));
-        scoreDisplay.setText("Score: 0");
-
-//        levelDisplay.setFont(new java.awt.Font("Segoe UI", 0, 18));
-        levelDisplay.setFont(new Font("Segoe UI", Font.BOLD, 18));
-        levelDisplay.setText("Level: 1");
-
         GroupLayout gameAreaPlaceholderLayout = new GroupLayout(gameAreaPlaceholder);
         gameAreaPlaceholder.setLayout(gameAreaPlaceholderLayout);
         gameAreaPlaceholderLayout.setHorizontalGroup(
@@ -51,6 +46,12 @@ public class GameForm extends JFrame {
                         .addGap(0, 298, Short.MAX_VALUE)
         );
 
+        scoreDisplay.setFont(new Font("Segoe UI", 0, 18));
+        scoreDisplay.setText("Score: 0");
+
+        levelDisplay.setFont(new Font("Segoe UI", 0, 18));
+        levelDisplay.setText("Level: 1");
+
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -60,24 +61,25 @@ public class GameForm extends JFrame {
                                 .addComponent(gameAreaPlaceholder, GroupLayout.PREFERRED_SIZE,
                                         GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING))
-                                        .addComponent(scoreDisplay).addComponent(levelDisplay)
-                                        .addGap(62, 62, 62))
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addComponent(scoreDisplay)
+                                        .addComponent(levelDisplay))
+                                .addGap(62, 62, 62))
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING))
-                                .addGroup(layout.createSequentialGroup())
-                                .addComponent(scoreDisplay).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(levelDisplay)
-                                .addComponent(gameAreaPlaceholder, GroupLayout.PREFERRED_SIZE,
-                                        GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(scoreDisplay)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(levelDisplay))
+                                        .addComponent(gameAreaPlaceholder, GroupLayout.PREFERRED_SIZE,
+                                                GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pack();
-
         setLocationRelativeTo(null);
     }
 
