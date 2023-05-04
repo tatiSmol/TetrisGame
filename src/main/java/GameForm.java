@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 
 public class GameForm extends JFrame {
     private JPanel gameAreaPlaceholder;
@@ -7,6 +9,7 @@ public class GameForm extends JFrame {
 
     public GameForm() {
         initComponents();
+        initControls();
         gameArea = new GameArea(gameAreaPlaceholder, 10);
         this.add(gameArea);
         startGame();
@@ -55,6 +58,44 @@ public class GameForm extends JFrame {
         pack();
 
         setLocationRelativeTo(null);
+    }
+
+    private void initControls() {
+        InputMap inputMap = this.getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        ActionMap actionMap = this.getRootPane().getActionMap();
+
+        inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0), "right");
+        inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0), "left");
+        inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), "up");
+        inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), "down");
+
+        actionMap.put("right", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                gameArea.moveBlockRight();
+            }
+        });
+
+        actionMap.put("left", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                gameArea.moveBlockLeft();
+            }
+        });
+
+        actionMap.put("up", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                gameArea.rotateBlock();
+            }
+        });
+
+        actionMap.put("down", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                gameArea.dropBlock();
+            }
+        });
     }
 
     public static void main(String[] args) {
