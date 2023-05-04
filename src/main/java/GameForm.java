@@ -5,6 +5,8 @@ import java.awt.event.KeyEvent;
 
 public class GameForm extends JFrame {
     private JPanel gameAreaPlaceholder;
+    private JLabel levelDisplay;
+    private JLabel scoreDisplay;
     private GameArea gameArea;
 
     public GameForm() {
@@ -16,17 +18,27 @@ public class GameForm extends JFrame {
     }
 
     public void startGame() {
-        new GameThread(gameArea).start();
+        new GameThread(gameArea, this).start();
     }
 
     private void initComponents() {
         gameAreaPlaceholder = new JPanel();
+        scoreDisplay = new JLabel();
+        levelDisplay = new JLabel();
+
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
 
         gameAreaPlaceholder.setBackground(new Color(238, 238, 238));
         gameAreaPlaceholder.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
         gameAreaPlaceholder.setPreferredSize(new Dimension(200, 300));
+
+        scoreDisplay.setFont(new java.awt.Font("Segoe UI", 0, 18));
+        scoreDisplay.setText("Score: 0");
+
+//        levelDisplay.setFont(new java.awt.Font("Segoe UI", 0, 18));
+        levelDisplay.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        levelDisplay.setText("Level: 1");
 
         GroupLayout gameAreaPlaceholderLayout = new GroupLayout(gameAreaPlaceholder);
         gameAreaPlaceholder.setLayout(gameAreaPlaceholderLayout);
@@ -45,14 +57,23 @@ public class GameForm extends JFrame {
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addGap(150, 150, 150)
-                                .addComponent(gameAreaPlaceholder, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(150, Short.MAX_VALUE))
+                                .addComponent(gameAreaPlaceholder, GroupLayout.PREFERRED_SIZE,
+                                        GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING))
+                                        .addComponent(scoreDisplay).addComponent(levelDisplay)
+                                        .addGap(62, 62, 62))
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(gameAreaPlaceholder, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING))
+                                .addGroup(layout.createSequentialGroup())
+                                .addComponent(scoreDisplay).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(levelDisplay)
+                                .addComponent(gameAreaPlaceholder, GroupLayout.PREFERRED_SIZE,
+                                        GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pack();
@@ -96,6 +117,14 @@ public class GameForm extends JFrame {
                 gameArea.dropBlock();
             }
         });
+    }
+
+    public void updateScore(int score) {
+        scoreDisplay.setText("Score: " + score);
+    }
+
+    public void updateLevel(int level) {
+        levelDisplay.setText("Level: " + level);
     }
 
     public static void main(String[] args) {

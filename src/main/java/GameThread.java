@@ -3,9 +3,16 @@ import java.util.logging.Logger;
 
 public class GameThread extends Thread{
     private GameArea gameArea;
+    private GameForm gameForm;
+    private int score;
+    private int level = 1;
+    private int scorePerLevel = 3;
+    private int pause = 1000;
+    private int speedupPerLevel = 100;
 
-    public GameThread(GameArea gameArea) {
+    public GameThread(GameArea gameArea, GameForm gameForm) {
         this.gameArea = gameArea;
+        this.gameForm = gameForm;
     }
 
     @Override
@@ -15,11 +22,29 @@ public class GameThread extends Thread{
 
             while (gameArea.moveBlockDown()) {
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(pause);
                 } catch (InterruptedException e) {
                     Logger.getLogger(GameThread.class.getName()).log(Level.SEVERE, null, e);
                 }
             }
+
+            if (gameArea.isBlockOutOfBounds()) {
+                System.out.println("Game is over");
+                break;
+            }
+
+            gameArea.moveBlockToBackground();
+            score += gameArea.clearLines();
+            gameForm.updateScore(score);
+
+            int lvl = score / scorePerLevel + 1;
+            if (lvl > level) {
+                level = lvl;
+                scorePerLevel++;
+                gameForm.updateLevel(level);
+                pause -= speedupPerLevel;
+            }
         }
+
     }
 }
