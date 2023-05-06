@@ -10,8 +10,10 @@ public class GameForm extends JFrame {
     private JLabel levelDisplay;
     private JLabel scoreDisplay;
     private JButton menuBtn;
+    private JButton pauseBtn;
     private GameArea gameArea;
     private GameThread gameThread;
+    private boolean paused = false;
 
     public GameForm() {
         initComponents();
@@ -22,7 +24,7 @@ public class GameForm extends JFrame {
 
     public void startGame() {
         gameArea.initBackgroundArray();
-        gameThread = new GameThread(gameArea, this);
+        gameThread = new GameThread(gameArea, this, false);
         gameThread.start();
     }
 
@@ -31,6 +33,7 @@ public class GameForm extends JFrame {
         scoreDisplay = new JLabel();
         levelDisplay = new JLabel();
         menuBtn = new JButton();
+        pauseBtn = new JButton();
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
@@ -61,13 +64,19 @@ public class GameForm extends JFrame {
         menuBtn.setPreferredSize(new Dimension(123, 23));
         menuBtn.addActionListener(this::menuBtnActionPerformed);
 
+        pauseBtn.setText("PAUSE");
+        pauseBtn.addActionListener(this::pauseBtnActionPerformed);
+
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(menuBtn, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-                                GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup().addContainerGap()
+                                        .addComponent(menuBtn, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+                                                GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup().addGap(31, 31, 31)
+                                        .addComponent(pauseBtn)))
                         .addGap(34, 34, 34)
                         .addComponent(gameAreaPlaceholder, GroupLayout.PREFERRED_SIZE,
                                 GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -83,8 +92,11 @@ public class GameForm extends JFrame {
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                .addComponent(menuBtn, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-                                        GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addComponent(menuBtn, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+                                                GroupLayout.PREFERRED_SIZE).addGap(18, 18, 18)
+                                        .addComponent(pauseBtn, GroupLayout.PREFERRED_SIZE, 31,
+                                                GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
                                         .addComponent(scoreDisplay)
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
@@ -104,6 +116,11 @@ public class GameForm extends JFrame {
         TetrisGame.showStartup();
     }
 
+    private void pauseBtnActionPerformed(ActionEvent evt) {
+        Action pauseAction = getRootPane().getActionMap().get("pause");
+        pauseAction.actionPerformed(new ActionEvent(evt.getSource(), ActionEvent.ACTION_PERFORMED, null));
+    }
+
     private void initControls() {
         InputMap inputMap = this.getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
         ActionMap actionMap = this.getRootPane().getActionMap();
@@ -112,32 +129,55 @@ public class GameForm extends JFrame {
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0), "left");
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), "up");
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), "down");
+        inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_P, 0), "pause");
 
         actionMap.put("right", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                gameArea.moveBlockRight();
+                if (!paused) {
+                    gameArea.moveBlockRight();
+                }
             }
         });
 
         actionMap.put("left", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                gameArea.moveBlockLeft();
+                if (!paused) {
+                    gameArea.moveBlockLeft();
+                }
             }
         });
 
         actionMap.put("up", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                gameArea.rotateBlock();
+                if (!paused) {
+                    gameArea.rotateBlock();
+                }
             }
         });
 
         actionMap.put("down", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                gameArea.dropBlock();
+                if (!paused) {
+                    gameArea.dropBlock();
+                }
+            }
+        });
+
+        actionMap.put("pause", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                paused = !paused;
+                if (paused) {
+                    gameThread.pauseGame();
+                    pauseBtn.setText("RESUME");
+                } else {
+                    gameThread.resumeGame();
+                    pauseBtn.setText("PAUSE");
+                }
             }
         });
     }

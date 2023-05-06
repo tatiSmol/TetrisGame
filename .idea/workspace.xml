@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63ab8aa5-12c9-46eb-b953-f8567e513b60" name="Changes" comment="Adding a leaderboard.">
+    <list default="true" id="63ab8aa5-12c9-46eb-b953-f8567e513b60" name="Changes" comment="Saving/loading the leaderboard data.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tetrisgame/GameForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/GameForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tetrisgame/LeaderboardForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/LeaderboardForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tetrisgame/GameThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/GameThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683386519676</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Saving/loading the leaderboard data.">
+      <created>1683388594468</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1683388594468</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -172,6 +179,7 @@
     <MESSAGE value="Clearing complete lines." />
     <MESSAGE value="Adding other block types." />
     <MESSAGE value="Adding a leaderboard." />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding a leaderboard." />
+    <MESSAGE value="Saving/loading the leaderboard data." />
+    <option name="LAST_COMMIT_MESSAGE" value="Saving/loading the leaderboard data." />
   </component>
 </project>
