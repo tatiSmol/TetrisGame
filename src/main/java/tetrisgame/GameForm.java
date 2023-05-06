@@ -73,9 +73,11 @@ public class GameForm extends JFrame {
                                 GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                .addComponent(scoreDisplay)
-                                .addComponent(levelDisplay))
-                        .addGap(62, 62, 62))
+                                .addComponent(levelDisplay, GroupLayout.PREFERRED_SIZE, 90,
+                                        GroupLayout.PREFERRED_SIZE)
+                                .addComponent(scoreDisplay, GroupLayout.PREFERRED_SIZE, 90,
+                                        GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup()

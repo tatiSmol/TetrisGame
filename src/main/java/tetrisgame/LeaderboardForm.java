@@ -2,21 +2,29 @@ package tetrisgame;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
+import java.io.*;
+import java.util.Collections;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class LeaderboardForm extends JFrame {
+    private final String LBFile = "leaderboard";
     private JButton menuBtn;
     private JScrollPane jScrollPane1;
     private JTable leaderboard;
     private DefaultTableModel defaultTableModel;
+    private TableRowSorter<TableModel> sorter;
 
     public LeaderboardForm() {
         initComponents();
         initTableData();
+        initTableSorter();
     }
 
     private void initComponents() {
@@ -34,7 +42,12 @@ public class LeaderboardForm extends JFrame {
         leaderboard.setModel(
                 new DefaultTableModel(new Object[][] {},
                         new String[] {"Player", "Score"}) {
+            Class[] types = new Class[] {Object.class, Integer.class};
             boolean[] canEdit = new boolean[] {false, false};
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -71,7 +84,36 @@ public class LeaderboardForm extends JFrame {
     }
 
     private void initTableData() {
+        Vector<String> columnNames = new Vector<>();
+        columnNames.add("Player");
+        columnNames.add("Score");
+
         defaultTableModel = (DefaultTableModel) leaderboard.getModel();
+        defaultTableModel.setRowCount(0);
+        defaultTableModel.setColumnIdentifiers(columnNames);
+
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(LBFile))) {
+            Vector<Vector<Object>> dataVector = (Vector<Vector<Object>>) objectInputStream.readObject();
+            for (Vector<Object> row : dataVector) {
+                defaultTableModel.addRow(row);
+            }
+        } catch (IOException | ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private void initTableSorter() {
+        sorter = new TableRowSorter<>(leaderboard.getModel());
+        sorter.setSortKeys(Collections.singletonList(new RowSorter.SortKey(1, SortOrder.DESCENDING)));
+        leaderboard.setRowSorter(sorter);
+    }
+
+    private void saveLeaderboard() {
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(LBFile))) {
+            objectOutputStream.writeObject(defaultTableModel.getDataVector());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     private void menuBtnActionPerformed(ActionEvent evt) {
@@ -81,6 +123,8 @@ public class LeaderboardForm extends JFrame {
 
     public void addPlayer(String name, int score) {
         defaultTableModel.addRow(new Object[] {name, score});
+        sorter.sort();
+        saveLeaderboard();
         this.setVisible(true);
     }
 

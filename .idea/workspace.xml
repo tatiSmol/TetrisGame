@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63ab8aa5-12c9-46eb-b953-f8567e513b60" name="Changes" comment="Adding other block types.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/LeaderboardForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/StartupForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/TetrisGame.java" afterDir="false" />
+    <list default="true" id="63ab8aa5-12c9-46eb-b953-f8567e513b60" name="Changes" comment="Adding a leaderboard.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tetrisgame/GameArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/GameArea.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tetrisgame/GameForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/GameForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tetrisgame/GameThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/GameThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tetrisgame/LeaderboardForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/LeaderboardForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683242357010</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Adding a leaderboard.">
+      <created>1683386519676</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1683386519676</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -168,6 +171,7 @@
     <MESSAGE value="Adding controls using key bindings." />
     <MESSAGE value="Clearing complete lines." />
     <MESSAGE value="Adding other block types." />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding other block types." />
+    <MESSAGE value="Adding a leaderboard." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding a leaderboard." />
   </component>
 </project>
