@@ -4,19 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63ab8aa5-12c9-46eb-b953-f8567e513b60" name="Changes" comment="Clearing complete lines.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/blocks/ShapeI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/blocks/ShapeJ.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/blocks/ShapeL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/blocks/ShapeO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/blocks/ShapeS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/blocks/ShapeT.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/blocks/ShapeZ.java" afterDir="false" />
+    <list default="true" id="63ab8aa5-12c9-46eb-b953-f8567e513b60" name="Changes" comment="Adding other block types.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/LeaderboardForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/StartupForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/TetrisGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/GameArea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/GameForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/GameThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/TetrisBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/TetrisBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tetrisgame/GameArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/GameArea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tetrisgame/GameForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/GameForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tetrisgame/GameThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/GameThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,11 +47,12 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="tetrisgame" />
       <recent name="blocks" />
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.GameForm">
+  <component name="RunManager" selected="Application.TetrisGame">
     <configuration name="F" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="F" />
       <module name="TetrisGame" />
@@ -85,20 +81,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tetris" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Tetris" />
+    <configuration name="TetrisGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tetrisgame.TetrisGame" />
       <module name="TetrisGame" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tetrisgame.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TetrisGame" />
         <item itemvalue="Application.GameForm" />
         <item itemvalue="Application.F" />
         <item itemvalue="Application.GF" />
         <item itemvalue="Application.GameForm2" />
-        <item itemvalue="Application.Tetris" />
       </list>
     </recent_temporary>
   </component>
@@ -139,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683238505277</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Adding other block types.">
+      <created>1683242357010</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1683242357010</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -158,6 +167,7 @@
     <MESSAGE value="Spawning new blocks." />
     <MESSAGE value="Adding controls using key bindings." />
     <MESSAGE value="Clearing complete lines." />
-    <option name="LAST_COMMIT_MESSAGE" value="Clearing complete lines." />
+    <MESSAGE value="Adding other block types." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding other block types." />
   </component>
 </project>

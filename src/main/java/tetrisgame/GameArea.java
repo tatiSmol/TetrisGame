@@ -14,7 +14,7 @@ public class GameArea extends JPanel {
 
 
     public GameArea(JPanel placeholder, int columns) {
-        placeholder.setVisible(true);
+//        placeholder.setVisible(true);
         this.setBounds(placeholder.getBounds());
         this.setBackground(placeholder.getBackground());
         this.setBorder(placeholder.getBorder());
@@ -79,6 +79,10 @@ public class GameArea extends JPanel {
                 }
             }
         }
+    }
+
+    public void initBackgroundArray() {
+        background = new Color[gridRows][gridColumns];
     }
 
     private void drawGridSquare(Graphics g, Color c, int x, int y) {

@@ -9,24 +9,28 @@ public class GameForm extends JFrame {
     private JPanel gameAreaPlaceholder;
     private JLabel levelDisplay;
     private JLabel scoreDisplay;
+    private JButton menuBtn;
     private GameArea gameArea;
+    private GameThread gameThread;
 
     public GameForm() {
         initComponents();
         initControls();
         gameArea = new GameArea(gameAreaPlaceholder, 10);
         this.add(gameArea);
-        startGame();
     }
 
     public void startGame() {
-        new GameThread(gameArea, this).start();
+        gameArea.initBackgroundArray();
+        gameThread = new GameThread(gameArea, this);
+        gameThread.start();
     }
 
     private void initComponents() {
         gameAreaPlaceholder = new JPanel();
         scoreDisplay = new JLabel();
         levelDisplay = new JLabel();
+        menuBtn = new JButton();
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
@@ -52,35 +56,50 @@ public class GameForm extends JFrame {
         levelDisplay.setFont(new Font("Segoe UI", 0, 18));
         levelDisplay.setText("Level: 1");
 
+        menuBtn.setText("Main Menu");
+        menuBtn.setFocusable(false);
+        menuBtn.setPreferredSize(new Dimension(123, 23));
+        menuBtn.addActionListener(this::menuBtnActionPerformed);
+
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(150, 150, 150)
-                                .addComponent(gameAreaPlaceholder, GroupLayout.PREFERRED_SIZE,
-                                        GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                        .addComponent(scoreDisplay)
-                                        .addComponent(levelDisplay))
-                                .addGap(62, 62, 62))
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(menuBtn, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+                                GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(gameAreaPlaceholder, GroupLayout.PREFERRED_SIZE,
+                                GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addComponent(scoreDisplay)
+                                .addComponent(levelDisplay))
+                        .addGap(62, 62, 62))
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addComponent(scoreDisplay)
-                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(levelDisplay))
-                                        .addComponent(gameAreaPlaceholder, GroupLayout.PREFERRED_SIZE,
-                                                GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addComponent(menuBtn, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+                                        GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addComponent(scoreDisplay)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(levelDisplay))
+                                .addComponent(gameAreaPlaceholder, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+                                        GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
         pack();
         setLocationRelativeTo(null);
+    }
+
+    private void menuBtnActionPerformed(ActionEvent evt) {
+        gameThread.interrupt();
+        this.setVisible(false);
+        TetrisGame.showStartup();
     }
 
     private void initControls() {
