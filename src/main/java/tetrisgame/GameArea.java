@@ -14,7 +14,6 @@ public class GameArea extends JPanel {
 
 
     public GameArea(JPanel placeholder, int columns) {
-//        placeholder.setVisible(true);
         this.setBounds(placeholder.getBounds());
         this.setBackground(placeholder.getBackground());
         this.setBorder(placeholder.getBorder());
@@ -248,6 +247,9 @@ public class GameArea extends JPanel {
                 r++;
                 repaint();
             }
+        }
+        if (linesCleared > 0) {
+            TetrisGame.playClearLine();
         }
         return linesCleared;
     }
