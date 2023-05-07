@@ -1,9 +1,6 @@
 package tetrisgame;
 
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -11,22 +8,26 @@ import java.util.logging.Logger;
 
 public class AudioPlayer {
     private String soundsFolder = "sounds" + File.separator;
-    private String clearLinePath = soundsFolder + "clear.wav";
-    private String gameOverPath = soundsFolder + "success.wav";
-
-    private Clip clearLineSound, gameOverSound;
+    private Clip clearLineSound;
+    private Clip gameOverSound;
+    File lineSound = new File(soundsFolder + "clear.wav");
+    File overSound = new File(this.soundsFolder + "success.wav");
 
     public AudioPlayer() {
         try {
-            clearLineSound = AudioSystem.getClip();
-            gameOverSound = AudioSystem.getClip();
+            AudioInputStream lineStream = AudioSystem.getAudioInputStream(lineSound);
+            this.clearLineSound = AudioSystem.getClip();
+            this.clearLineSound.open(lineStream);
 
-            clearLineSound.open(AudioSystem.getAudioInputStream(new File(clearLinePath).getAbsoluteFile()));
-            gameOverSound.open(AudioSystem.getAudioInputStream(new File(gameOverPath).getAbsoluteFile()));
-        } catch (LineUnavailableException | UnsupportedAudioFileException | IOException e) {
-            Logger.getLogger(AudioPlayer.class.getName()).log(Level.SEVERE, null, e);
+            AudioInputStream overStream = AudioSystem.getAudioInputStream(overSound);
+            this.gameOverSound = AudioSystem.getClip();
+            this.gameOverSound.open(overStream);
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException var3) {
+            Logger.getLogger(AudioPlayer.class.getName()).log(Level.SEVERE, (String)null, var3);
         }
+
     }
+
 
     public void playClearLine() {
         clearLineSound.setFramePosition(0);

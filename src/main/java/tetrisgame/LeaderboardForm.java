@@ -14,7 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class LeaderboardForm extends JFrame {
-    private final String LBFile = "leaderboard";
+    private final String LBFileName = "leaderboard";
     private JButton menuBtn;
     private JScrollPane jScrollPane1;
     private JTable leaderboard;
@@ -83,6 +83,7 @@ public class LeaderboardForm extends JFrame {
 
     }
 
+    @SuppressWarnings("unchecked")
     private void initTableData() {
         Vector<String> columnNames = new Vector<>();
         columnNames.add("Player");
@@ -92,13 +93,16 @@ public class LeaderboardForm extends JFrame {
         defaultTableModel.setRowCount(0);
         defaultTableModel.setColumnIdentifiers(columnNames);
 
-        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(LBFile))) {
-            Vector<Vector<Object>> dataVector = (Vector<Vector<Object>>) objectInputStream.readObject();
-            for (Vector<Object> row : dataVector) {
-                defaultTableModel.addRow(row);
+        File file = new File("src/main/resources/" + LBFileName);
+        if (file.length() > 0) {
+            try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file))) {
+                Vector<Vector<Object>> dataVector = (Vector<Vector<Object>>) objectInputStream.readObject();
+                for (Vector<Object> row : dataVector) {
+                    defaultTableModel.addRow(row);
+                }
+            } catch (IOException | ClassNotFoundException ex) {
+                ex.printStackTrace();
             }
-        } catch (IOException | ClassNotFoundException ex) {
-            ex.printStackTrace();
         }
     }
 
@@ -109,7 +113,8 @@ public class LeaderboardForm extends JFrame {
     }
 
     private void saveLeaderboard() {
-        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(LBFile))) {
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(
+                new FileOutputStream("src/main/resources/" + LBFileName))) {
             objectOutputStream.writeObject(defaultTableModel.getDataVector());
         } catch (IOException ex) {
             ex.printStackTrace();
