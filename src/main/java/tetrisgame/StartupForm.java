@@ -20,6 +20,7 @@ public class StartupForm extends JFrame {
         leaderBtn = new JButton();
         quitBtn = new JButton();
 
+        setTitle("Tetris Game");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
 

@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63ab8aa5-12c9-46eb-b953-f8567e513b60" name="Changes" comment="Adding sounds.">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/leaderboard" afterDir="false" />
+    <list default="true" id="63ab8aa5-12c9-46eb-b953-f8567e513b60" name="Changes" comment="Work with pom file.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sounds/clear.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sounds/success.wav" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tetrisgame/AudioPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/AudioPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tetrisgame/GameForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/GameForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tetrisgame/LeaderboardForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/LeaderboardForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tetrisgame/StartupForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/StartupForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +189,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683391994242</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Work with pom file.">
+      <created>1683501843037</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1683501843037</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -210,6 +220,7 @@
     <MESSAGE value="Saving/loading the leaderboard data." />
     <MESSAGE value="Adding a pause/resume button." />
     <MESSAGE value="Adding sounds." />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding sounds." />
+    <MESSAGE value="Work with pom file." />
+    <option name="LAST_COMMIT_MESSAGE" value="Work with pom file." />
   </component>
 </project>

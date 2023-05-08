@@ -32,6 +32,7 @@ public class LeaderboardForm extends JFrame {
         jScrollPane1 = new JScrollPane();
         leaderboard = new JTable();
 
+        setTitle("Tetris Game");
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 

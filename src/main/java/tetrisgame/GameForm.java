@@ -35,6 +35,7 @@ public class GameForm extends JFrame {
         menuBtn = new JButton();
         pauseBtn = new JButton();
 
+        setTitle("Tetris Game");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
 

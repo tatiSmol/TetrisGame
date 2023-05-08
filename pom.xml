@@ -37,10 +37,10 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/sounds</outputDirectory>
+                            <outputDirectory>${project.build.directory}/src/main/resources/sounds</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>sounds</directory>
+                                    <directory>/src/main/resources/sounds</directory>
                                     <filtering>false</filtering>
                                 </resource>
                             </resources>

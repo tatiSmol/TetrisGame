@@ -1,33 +1,35 @@
 package tetrisgame;
 
-import javax.sound.sampled.*;
-import java.io.File;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class AudioPlayer {
-    private String soundsFolder = "sounds" + File.separator;
-    private Clip clearLineSound;
-    private Clip gameOverSound;
-    File lineSound = new File(soundsFolder + "clear.wav");
-    File overSound = new File(this.soundsFolder + "success.wav");
+    private Clip clearLineSound, gameOverSound;
 
     public AudioPlayer() {
         try {
-            AudioInputStream lineStream = AudioSystem.getAudioInputStream(lineSound);
+            InputStream lineStream = new BufferedInputStream(
+                    getClass().getClassLoader().getResourceAsStream("sounds/clear.wav")
+            );
             this.clearLineSound = AudioSystem.getClip();
-            this.clearLineSound.open(lineStream);
+            this.clearLineSound.open(AudioSystem.getAudioInputStream(lineStream));
 
-            AudioInputStream overStream = AudioSystem.getAudioInputStream(overSound);
+            InputStream overStream = new BufferedInputStream(
+                    getClass().getClassLoader().getResourceAsStream("sounds/success.wav")
+            );
             this.gameOverSound = AudioSystem.getClip();
-            this.gameOverSound.open(overStream);
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException var3) {
-            Logger.getLogger(AudioPlayer.class.getName()).log(Level.SEVERE, (String)null, var3);
+            this.gameOverSound.open(AudioSystem.getAudioInputStream(overStream));
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            Logger.getLogger(AudioPlayer.class.getName()).log(Level.SEVERE, null, e);
         }
-
     }
-
 
     public void playClearLine() {
         clearLineSound.setFramePosition(0);
@@ -39,3 +41,5 @@ public class AudioPlayer {
         gameOverSound.start();
     }
 }
+
+
