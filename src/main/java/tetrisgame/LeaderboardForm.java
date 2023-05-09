@@ -14,7 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class LeaderboardForm extends JFrame {
-    private final String LBFileName = "leaderboard";
+    private final String LBFileName = "tetrisLeaderboard";
     private JButton menuBtn;
     private JScrollPane jScrollPane1;
     private JTable leaderboard;
@@ -94,9 +94,10 @@ public class LeaderboardForm extends JFrame {
         defaultTableModel.setRowCount(0);
         defaultTableModel.setColumnIdentifiers(columnNames);
 
-        File file = new File("src/main/resources/" + LBFileName);
-        if (file.length() > 0) {
-            try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file))) {
+        File leaderboardFile = new File(
+                System.getProperty("user.home") + File.separator + "Documents" + File.separator + LBFileName);
+        if (leaderboardFile.exists()) {
+            try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(leaderboardFile))) {
                 Vector<Vector<Object>> dataVector = (Vector<Vector<Object>>) objectInputStream.readObject();
                 for (Vector<Object> row : dataVector) {
                     defaultTableModel.addRow(row);
@@ -114,8 +115,9 @@ public class LeaderboardForm extends JFrame {
     }
 
     private void saveLeaderboard() {
-        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(
-                new FileOutputStream("src/main/resources/" + LBFileName))) {
+        File leaderboardFile = new File(
+                System.getProperty("user.home") + File.separator + "Documents" + File.separator + LBFileName);
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(leaderboardFile))) {
             objectOutputStream.writeObject(defaultTableModel.getDataVector());
         } catch (IOException ex) {
             ex.printStackTrace();

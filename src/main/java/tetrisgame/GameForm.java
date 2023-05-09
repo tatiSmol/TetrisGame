@@ -41,7 +41,7 @@ public class GameForm extends JFrame {
 
         gameAreaPlaceholder.setBackground(new Color(238, 238, 238));
         gameAreaPlaceholder.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
-        gameAreaPlaceholder.setPreferredSize(new Dimension(200, 300));
+        gameAreaPlaceholder.setPreferredSize(new Dimension(200, 400));
 
         GroupLayout gameAreaPlaceholderLayout = new GroupLayout(gameAreaPlaceholder);
         gameAreaPlaceholder.setLayout(gameAreaPlaceholderLayout);

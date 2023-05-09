@@ -182,7 +182,7 @@ public class GameArea extends JPanel {
     }
 
     private boolean checkRight() {
-        if (block.getRightEdge() == gridRows) {
+        if (block.getRightEdge() == gridRows - 1) {
             return false;
         }
 
@@ -196,7 +196,7 @@ public class GameArea extends JPanel {
                     int x = col + block.getX() + 1;
                     int y = row + block.getY();
                     if (y < 0) break;
-                    if (background[y][x] != null) return false;
+                    if (x >= gridColumns || background[y][x] != null) return false;
                     break;
                 }
             }
@@ -205,7 +205,7 @@ public class GameArea extends JPanel {
     }
 
     private boolean checkLeft() {
-        if (block.getLeftEdge() == gridRows) {
+        if (block.getLeftEdge() <= 0) {
             return false;
         }
 

@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63ab8aa5-12c9-46eb-b953-f8567e513b60" name="Changes" comment="Work with pom file.">
+    <list default="true" id="63ab8aa5-12c9-46eb-b953-f8567e513b60" name="Changes" comment="Fixing the AudioPlayer class to work correctly in an executable jar file.">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sounds/clear.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sounds/success.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tetrisgame/AudioPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/AudioPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tetrisgame/GameArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/GameArea.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tetrisgame/GameForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/GameForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tetrisgame/LeaderboardForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/LeaderboardForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tetrisgame/StartupForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tetrisgame/StartupForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/leaderboard" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/targetsrc/main/resources/sounds/clear.wav" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,18 +37,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
-    "last_opened_file_path": "C:/Users/judeclapton/Desktop/javaHub/TetrisGame",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propGUI"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/judeclapton/Desktop/javaHub/TetrisGame&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propGUI&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="tetrisgame" />
@@ -196,7 +195,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683501843037</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Fixing the AudioPlayer class to work correctly in an executable jar file.">
+      <created>1683589363291</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1683589363291</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -221,6 +227,7 @@
     <MESSAGE value="Adding a pause/resume button." />
     <MESSAGE value="Adding sounds." />
     <MESSAGE value="Work with pom file." />
-    <option name="LAST_COMMIT_MESSAGE" value="Work with pom file." />
+    <MESSAGE value="Fixing the AudioPlayer class to work correctly in an executable jar file." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing the AudioPlayer class to work correctly in an executable jar file." />
   </component>
 </project>
